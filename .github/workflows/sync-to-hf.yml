@@ -20,4 +20,6 @@ jobs:
       - name: Push to Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force "https://Akashkrprasad:[email protected]/spaces/Akashkrprasad/MahabharatGPT" HEAD:main
+        run: |
+          TOKEN="$(printf '%s' "$HF_TOKEN" | tr -d '[:space:]')"
+          git push --force "https://Akashkrprasad:${TOKEN}@huggingface.co/spaces/Akashkrprasad/MahabharatGPT" HEAD:main
